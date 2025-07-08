@@ -1,6 +1,9 @@
-package br.edu.ifpb.ads.padroes.atv1.rpg;
+package br.edu.ifpb.ads.padroes.atv1.rpg.prototype;
 
-public class Personagem {
+import br.edu.ifpb.ads.padroes.atv1.rpg.Arma;
+import br.edu.ifpb.ads.padroes.atv1.rpg.Armadura;
+
+public class Personagem  implements PrototypePersonagem, Cloneable{
 
     private String nome;
     private String raca;
@@ -85,4 +88,12 @@ public class Personagem {
                 nome, raca, classe, forca, inteligencia, agilidade, vida, mana);
     }
 
+    @Override
+    public PrototypePersonagem clone() {
+        try {
+            return (Personagem) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
